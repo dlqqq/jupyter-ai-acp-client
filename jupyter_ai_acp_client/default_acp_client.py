@@ -274,8 +274,8 @@ class JaiAcpClient(Client):
 
             persona.log.info(f"prompt_and_reply: starting for session {session_id}")
 
-            # Set awareness to indicate writing
-            persona.set_writing_status(True)
+            # Show a status indicator while the persona works
+            persona.set_status()
 
             try:
                 # Build content blocks: text prompt + optional attachment resources
@@ -348,8 +348,8 @@ class JaiAcpClient(Client):
                 persona.log.exception(f"prompt_and_reply: failed for session {session_id}")
                 raise
             finally:
-                # Clear awareness writing state
-                persona.set_writing_status(False)
+                # Clear the status indicator
+                persona.clear_status()
 
     def _handle_agent_message_chunk(self, session_id: str, update: AgentMessageChunk) -> None:
         """Handle an AgentMessageChunk event by appending text to the message."""
@@ -766,8 +766,8 @@ class JaiAcpClient(Client):
             if msg:
                 persona.chat.update_message(msg, append=False, trigger_actions=[find_mentions])
 
-        # Reset awareness
-        persona.set_writing_status(False)
+        # Reset status
+        persona.clear_status()
 
         self._cancel_pending_work(session_id)
 

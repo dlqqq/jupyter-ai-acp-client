@@ -90,7 +90,7 @@ class ToolCallManager:
         session.current_message_id = message_id
         session.all_message_ids.append(message_id)
         persona.log.info(f"Created message {message_id} for session {session_id}")
-        persona.set_writing_status(message_id)
+        persona.set_status()
 
         return message_id
 

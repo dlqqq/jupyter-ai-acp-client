@@ -265,7 +265,7 @@ def _real_usage_persona():
     # round-trips through the real typed properties.
     persona.state = _state()
     persona.chat = MagicMock()
-    # `set_writing_status()` (called incidentally by `prompt_and_reply`) builds
+    # `set_status()` (called incidentally by `prompt_and_reply`) builds
     # `as_user()`, which reads `self.defaults`; this persona has none, so mock it.
     persona.as_user = MagicMock()
     return persona
