@@ -574,7 +574,7 @@ class BaseAcpPersona(BasePersona):
             "Setting %d slash commands for '%s' in room '%s'.",
             len(commands),
             self.name,
-            self.parent.room_id,
+            self.parent.chat.get_id(),
         )
         self._acp_slash_commands = commands
 

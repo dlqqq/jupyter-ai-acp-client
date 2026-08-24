@@ -32,7 +32,7 @@ def _state() -> PersonaSessionState:
     round-trip through the real state object."""
     return PersonaSessionState(
         event_logger=None,
-        room_id="test-room",
+        chat_id="test-room",
         persona_id="test-persona",
         log=logging.getLogger("test"),
     )

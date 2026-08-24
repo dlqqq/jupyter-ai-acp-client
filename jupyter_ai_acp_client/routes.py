@@ -30,8 +30,8 @@ class PermissionHandler(APIHandler):
         )
         logger.debug(f"_find_client_for_session: looking for session_id={session_id}, "
                      f"persona_managers count={len(persona_managers)}")
-        for room_id, pm in persona_managers.items():
-            logger.debug(f"  checking room={room_id}, personas={list(pm.personas.keys())}")
+        for chat_id, pm in persona_managers.items():
+            logger.debug(f"  checking chat={chat_id}, personas={list(pm.personas.keys())}")
             for persona_id, persona in pm.personas.items():
                 if not isinstance(persona, BaseAcpPersona):
                     logger.debug(f"    {persona_id}: not BaseAcpPersona, skipping")
